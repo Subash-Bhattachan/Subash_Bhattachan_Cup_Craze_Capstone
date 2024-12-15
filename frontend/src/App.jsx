@@ -11,15 +11,28 @@ import SingleProduct from "./pages/SingleProduct";
 import Cart from "./pages/Cart";
 import ErrorPage from "./pages/ErrorPage";
 import { GlobalStyle } from "./styles/GlobalStyle";
+import { ThemeProvider } from 'styled-components';
+import Header from './components/Header';
 
 
 
 function App() {
+
+  const theme = {
+    colors: {
+    bg: "beige",
+    },
+    media: {
+      mobile: "768px",
+      tab: "998px",
+    }
+  }
   
   return (
-  
+    <ThemeProvider theme={theme}>
      <Router>
       <GlobalStyle />
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -28,11 +41,10 @@ function App() {
         <Route path="/singleproduct/:id" element={<SingleProduct />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="*" element={<ErrorPage />} />
-        
-
 
       </Routes>
      </Router>
+     </ThemeProvider>
       
     )
 }
