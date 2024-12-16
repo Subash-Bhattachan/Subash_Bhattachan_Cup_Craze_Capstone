@@ -13,6 +13,7 @@ import ErrorPage from "./pages/ErrorPage";
 import { GlobalStyle } from "./styles/GlobalStyle";
 import { ThemeProvider } from 'styled-components';
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 
 
@@ -43,6 +44,7 @@ function App() {
         <Route path="*" element={<ErrorPage />} />
 
       </Routes>
+      <Footer />
      </Router>
      </ThemeProvider>
       
