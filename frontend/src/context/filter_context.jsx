@@ -10,6 +10,7 @@ const initialState = {
     sorting_value: "lowest",
     filters: {
         text: "",
+        company: "all",
     },
 };
 
@@ -46,6 +47,11 @@ export const FilterContextProvider = ({ children }) => {
 
     };
 
+    // to clear the filters
+    const clearFilters =() => {
+        dispatch({type: "CLEAR_FILTERS"})
+    }
+
     // to sort the product
     useEffect(() => {
         dispatch({ type: "FILTER_PRODUCTS" })
@@ -64,6 +70,7 @@ export const FilterContextProvider = ({ children }) => {
             setListView,
             sorting,
             updateFilterValue,
+            clearFilters,
         }}>
             {children}
         </FilterContext.Provider>

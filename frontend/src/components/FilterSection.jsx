@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import { useFilterContext } from "../context/filter_context";
+import { Button } from "../styles/Button"
 
 const FilterSection = () => {
     const {
         filters: { text, company },
         all_products,
         updateFilterValue,
+        clearFilters,
     } = useFilterContext();
 
 
@@ -15,7 +17,7 @@ const FilterSection = () => {
             return curElem[property];
         });
         //console.log(newVal);
-        return newVal = ["All", ...new Set(newVal)];
+        return newVal = ["all", ...new Set(newVal)];
         //console.log(newVal);
        
     }
@@ -59,7 +61,11 @@ const FilterSection = () => {
 
                 </form>
             </div>
-
+                      <div className="filter-clear">
+                        <Button className="btn" onClick={clearFilters}> 
+                          Clear Filters 
+                          </Button>
+                      </div>
         </Wrapper>
     )
 
