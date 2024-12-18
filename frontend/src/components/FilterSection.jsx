@@ -2,24 +2,67 @@ import styled from "styled-components";
 import { useFilterContext } from "../context/filter_context";
 
 const FilterSection = () => {
-    const {filter: {text}, updateFilterValue} = useFilterContext;
-  return (
-    <Wrapper>
-        <div className="filter-search">
-            <form on onSubmit={(e) => e.preventDefault()}>
-                <input
-                type="text"
-                name="text"
-                value={text}
-                onChange={updateFilterValue}
-                />
+    const {
+        filters: { text, company },
+        all_products,
+        updateFilterValue,
+    } = useFilterContext();
 
-            </form>
-        </div>
 
-    </Wrapper>
-  )
-  
+    // to get the unique data of each field
+    const getUniqueData = (data, property) => {
+        let newVal = data.map((curElem) => {
+            return curElem[property];
+        });
+        //console.log(newVal);
+        return newVal = ["All", ...new Set(newVal)];
+        //console.log(newVal);
+       
+    }
+
+    const companyData = getUniqueData(all_products, "company");
+
+    return (
+        <Wrapper>
+            <div className="filter-search">
+                <form onSubmit={(e) => e.preventDefault()}>
+                    <input
+                        type="text"
+                        name="text"
+                        value={text}
+                        onChange={updateFilterValue}
+                        placeholder="SEARCH"
+                    />
+
+                </form>
+            </div>
+
+            <div className="filter-company">
+                <h3>Company</h3>
+                <form action="#">
+                    <select name="company" 
+                    id="company" 
+                    className="filter-company--select" 
+                    onClick={updateFilterValue} >
+                      {
+                        companyData.map((curElem, index) => {
+                            return (
+                                <option key={index}
+                                value={curElem} 
+                                name="company">
+                                    {curElem}
+                                </option>
+                            )
+                        })
+                      }  
+                    </select>
+
+                </form>
+            </div>
+
+        </Wrapper>
+    )
+
 }
 
 const Wrapper = styled.section`
