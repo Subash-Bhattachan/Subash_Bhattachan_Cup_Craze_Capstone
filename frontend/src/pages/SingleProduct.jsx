@@ -7,6 +7,8 @@ import PageNavigation from "../components/PageNavigation";
 import MyImage from "../components/MyImage";
 import { Container } from "../styles/Container";
 import FormatPrice from "../helpers/FormatPrice";
+import AddToCart from "../components/AddToCart";
+import CartAmountToggle from "../components/CartAmountToggle";
 
 const API = "https://api.pujakaitem.com/api/products"
 
@@ -28,7 +30,7 @@ const SingleProduct = () => {
   return (
     <Wrapper>
       <PageNavigation title={name} />
-      <container className="container">
+      <Container className="container">
         <div className="grid grid-two-column">
 
           <div className="product_images">
@@ -48,12 +50,16 @@ const SingleProduct = () => {
               <span>Available: {stock > 0 ? "In Stock" : "Not Available"}</span>
               <p>Brand: <span>{ company }</span></p>
             </div>
+            <hr />
+            {stock > 0 && <AddToCart product={singleProduct} />}
+
+
           </div>
         </div>
 
         </div>
 
-      </container>
+      </Container>
     </Wrapper >
 
   )
@@ -62,6 +68,7 @@ const SingleProduct = () => {
 const Wrapper = styled.section`
   .container {
     padding: 9rem 0;
+   
   }
 
   .product_images {

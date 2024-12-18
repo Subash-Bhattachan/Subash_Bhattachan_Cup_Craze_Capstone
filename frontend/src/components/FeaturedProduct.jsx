@@ -19,11 +19,10 @@ const FeaturedProduct = () => {
       <div className="container">
         <div className="intro-data">Check Now!</div>
         <div className="common-heading">Our Best Sellers!</div>
-
-        <div className="grid grid-three-columns">
-        {featuredProducts.map((curElem) => {
-          return<Product key={curElem.id} {...curElem} />
-        })}
+        <div className="grid grid-three-column">
+          {featuredProducts.map((curElem) => {
+            return <Product key={curElem.id} {...curElem} />;
+          })}
         </div>
       </div>
     </Wrapper>
@@ -32,34 +31,66 @@ const FeaturedProduct = () => {
 
 
 const Wrapper = styled.section`
-  padding: 9rem 0;
+  padding: 4rem 0;
   background-color: ${({ theme }) => theme.colors.bg};
 
   .container {
     max-width: 120rem;
-    margin: auto;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 1.2rem; 
+    padding: 0 8rem; 
+    justify-content: center; 
+    
   }
 
-  .intro-data,
-  .common-heading {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
+  figure {
+    width: 23rem; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s linear;
 
-  .grid {
-    display: grid;
-    gap: 2rem;
-  }
-
-  .grid-three-columns {
-    grid-template-columns: repeat(3, 1fr);
-
-    @media (max-width: 768px) {
-      grid-template-columns: repeat(2, 1fr);
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      transition: all 0.2s linear;
+      cursor: pointer;
     }
 
-    @media (max-width: 576px) {
-      grid-template-columns: 1fr;
+    &:hover::after {
+      width: 100%;
+    }
+
+    &:hover img {
+      transform: scale(1.2);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      transition: all 0.2s linear;
+    }
+
+    .caption {
+      position: absolute;
+      top: 15%;
+      right: 10%;
+      text-transform: uppercase;
+      background-color: ${({ theme }) => theme.colors.bg};
+      color: ${({ theme }) => theme.colors.helper};
+      padding: 0.8rem 2rem;
+      font-size: 1.2rem;
+      border-radius: 2rem;
     }
   }
 `;
