@@ -9,7 +9,11 @@ import reducer from "../reducer/productReducer";
 
 const AppContext = createContext();
 
-const API = "https://api.pujakaitem.com/api/products";
+//const API = "https://api.pujakaitem.com/api/products";
+
+const API = "http://localhost:5000/api/cups";
+const API_SINGLE = "http://localhost:5000/api/cups/custom"; // To ensure custom route
+
 
 const initialState = {
     isLoading: false,
@@ -40,7 +44,8 @@ const AppProvider = ({ children }) => {
 const getSingleProduct = async (url) => {
     dispatch({ type: "SET_SINGLE_LOADING" });
     try {
-        const res = await axios.get(url);
+        //const res = await axios.get(url);
+        const res = await axios.get(`${API_SINGLE}/${id}`); // Fetch single product
         const singleProduct = await res.data; 
         dispatch({ type: "SET_SINGLE_PRODUCT", payload: singleProduct });
     } catch (error) {

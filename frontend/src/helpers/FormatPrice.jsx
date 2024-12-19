@@ -4,7 +4,7 @@ const FormatPrice = ({ price }) => {
         currency: "USD",
         maximumFractionDigits: 2,
 
-    }).format (price / 100);
+    }).format (price * 1/100 * 100);
 };
 
 export default FormatPrice;

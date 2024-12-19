@@ -30,11 +30,14 @@ if (process.env.NODE_ENV !== "production") {
 router.post("/", async (req, res) => {
     try {
         const cup = {
-            brand_name: req.body.brand_name,
-            capacity_in_oz: req.body.capacity_in_oz,
-            price_in_dollars: req.body.price_in_dollars,
-            material: req.body.material,
-            manufactured_year: req.body.manufactured_year
+            id: req.body.id,
+            name: req.body.name,
+            company: req.body.company,
+            price: req.body.price,
+            image: req.body.image,
+            description: req.body.description,
+            featured: req.body.featured
+            
         };
 
         // Create the cup using your Cup model
@@ -62,7 +65,7 @@ router.get("/", async (req, res) => {
 });
 
 
-// GET /api/cups/:id/ Retrieve a cup by its ID
+// GET /api/cups/:id/ Retrieve a cup by its ID that comes wit the product
 router.get("/:id", async (req, res) => {
     try {
         const cup = await Cup.findById(req.params.id);
@@ -109,6 +112,52 @@ router.delete("/:id", async (req, res) => {
         res.status(500).json({ error: "Error deleting cup" });
     }
 });
+
+
+//"cups/cup/id"
+// router.get("/:id", async (req, res) => {
+//     const { id } = req.params; // Extract `id` from the query string
+//     console.log("received id", id)
+//     try {
+//       // Convert id to a number for comparison (if `id` is stored as a number in DB)
+//       const cup = await Cup.findOne({ id: Number(id) });
+  
+//       if (!cup) {
+//         return res.status(404).json({ error: "Cup not found" });
+//       }
+  
+//       res.json(cup); // Send the matching cup as the response
+//     } catch (error) {
+//       console.error("Error fetching cup:", error);
+//       res.status(500).json({ error: "Server error" });
+//     }
+//   });
+  
+router.get("/custom/:id", async (req, res) => {
+    const { id } = req.params; // Extract the custom ID from the URL
+  
+    try {
+      // Fetch the cup using the custom `id`
+      const cup = await Cup.findOne({ id: Number(id) }); // Convert `id` to a number for querying
+  
+      if (!cup) {
+        return res.status(404).json({ error: "Cup not found" });
+      }
+  
+      res.status(200).json(cup); // Send the cup data as JSON
+    } catch (error) {
+      console.error("Error retrieving cup by custom ID:", error);
+      res.status(500).json({ error: "Error retrieving cup by custom ID" });
+    }
+  });
+  
+
+
+
+
+
+
+
 
 //module.exports = router;
 export default router;

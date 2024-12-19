@@ -2,6 +2,8 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import cors from 'cors';
+
 dotenv.config();
 
 
@@ -15,6 +17,10 @@ import reviewRoutes from "./routes/reviewRoutes.mjs";
 
 app.use(express.json());
 app.use(bodyParser.json());
+
+
+// Enable CORS for all origins
+app.use(cors());
 
 // Routes
 app.use('/api/cups', cupRoutes);

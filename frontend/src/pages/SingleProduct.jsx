@@ -10,18 +10,23 @@ import FormatPrice from "../helpers/FormatPrice";
 import AddToCart from "../components/AddToCart";
 import CartAmountToggle from "../components/CartAmountToggle";
 
-const API = "https://api.pujakaitem.com/api/products"
+//const API = "https://api.pujakaitem.com/api/products"
+
+//const API = "http://localhost:5000/api/cups"
 
 const SingleProduct = () => {
   const { getSingleProduct, isSingleLoading, singleProduct } = useProductContext();
   const { id } = useParams();
 
   // destrcuturing the properties 
-  const { id: alias, name, company, price, description, category, stock, stars, reviews, image } = singleProduct;
+  const { id: alias, name, company, price, description, stock, stars, reviews, image } = singleProduct;
 
   useEffect(() => {
-    getSingleProduct(`${API}?id=${id}`);
-  }, []);
+    //console.log(API)
+    //getSingleProduct(`${API}?id=${id}`);
+    getSingleProduct(id);
+    //getSingleProduct(`${API}/${id}`);
+  }, [id]);
 
   if (isSingleLoading) {
     return <div className="page_loading">Loading......</div>
