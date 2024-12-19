@@ -7,7 +7,7 @@ const CartContext = createContext();
 const initialState = {
     cart: [],
     total_item: "",
-    shipping_fee: 500,
+    //shipping_fee: 500,
 };
 
 const CartProvider = ({ children }) => {

@@ -30,7 +30,7 @@ const SingleProduct = () => {
     getSingleProduct(`${API_SINGLE}/${id}`);
   }, [id]);
 
-console.log("Single product state:", singleProduct); 
+  console.log("Single product state:", singleProduct);
 
   if (isSingleLoading) {
     return <div className="page_loading">Loading......</div>
@@ -48,23 +48,23 @@ console.log("Single product state:", singleProduct);
           </div>
 
           <div className="product-data">
-          <h2>{name}</h2>
-          <p>{stars}</p>
-          <p>{reviews} reviews</p>
-          <div className="product-data-price">
+            <h2>{name}</h2>
 
-            <p>Price: <FormatPrice price={price} /></p>
-            <p>{description}</p>
-            <div className="product-data-info">
-              <span>Available: {stock > 0 ? "In Stock" : "Not Available"}</span>
-              <p>Brand: <span>{ company }</span></p>
+            <p>{reviews} reviews</p>
+            <div className="product-data-price">
+
+              <p>Price: <FormatPrice price={price} /></p>
+              <p>{description}</p>
+              <div className="product-data-info">
+                <span> Featured : </span>
+                <p>Brand: <span>{company}</span></p>
+              </div>
+              <hr />
+              {stock > 0 && <AddToCart product={singleProduct} />}
+
+
             </div>
-            <hr />
-            {stock > 0 && <AddToCart product={singleProduct} />}
-
-
           </div>
-        </div>
 
         </div>
 
@@ -92,24 +92,7 @@ const Wrapper = styled.section`
     justify-content: center;
     gap: 2rem;
 
-    .product-data-warranty {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #ccc;
-      margin-bottom: 1rem;
-
-      .product-warranty-data {
-        text-align: center;
-
-        .warranty-icon {
-          background-color: rgba(220, 220, 220, 0.5);
-          border-radius: 50%;
-          width: 4rem;
-          height: 4rem;
-          padding: 0.6rem;
-        }
+    
         p {
           font-size: 1.4rem;
           padding-top: 0.4rem;
