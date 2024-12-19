@@ -9,7 +9,7 @@ import reducer from "../reducer/productReducer";
 
 const AppContext = createContext();
 
-//const API = "https://api.pujakaitem.com/api/products";
+
 
 const API = "http://localhost:5000/api/cups";
 const API_SINGLE = "http://localhost:5000/api/cups/custom"; // To ensure custom route

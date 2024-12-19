@@ -42,9 +42,12 @@ const Sort = () => {
     )
 }
 const Wrapper = styled.section`
+
+
   display: flex;
   justify-content: space-between;
-  margin-top: 5rem;
+  margin-top: 0.08rem;
+  padding: 3rem;
 
   .sorting-list--grid {
     display: flex;

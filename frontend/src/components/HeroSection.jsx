@@ -14,9 +14,10 @@ const HeroSection = ({ myData}) => {
                 </p>
             <h1> { name } </h1>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem et, nostrum dolores at neque voluptates magnam provident ipsum, saepe eius, maxime iure placeat quisquam porro corporis pariatur veritatis itaque eos?
+            Cup Craze offers a wide range of unique, high-quality cups that cater to every style and preference, making it the perfect place for cup enthusiasts. With a focus on durable materials and creative designs, every cup is crafted to enhance your daily experience. By following Cup Craze, you'll stay updated on the latest collections and exclusive offers, ensuring you never miss out on something special. 
+            Whether you're a collector or just looking for a functional yet stylish cup, Cup Craze has something for everyone at unbeatable prices.
             </p>
-            <NavLink>
+            <NavLink to="/products">
                 <Button>Shop Now!</Button>
             </NavLink>
 
@@ -37,7 +38,7 @@ const HeroSection = ({ myData}) => {
   </Wrapper>
 }
 const Wrapper = styled.section`
-  padding: 4rem 0;
+  padding: 1rem 0;
 
   .container {
     max-width: 1200px;
@@ -59,11 +60,14 @@ const Wrapper = styled.section`
     p {
       margin: 1rem 0;
       color: #555;
+      
     }
 
     .intro-data {
-      color: #ff5722;
+       color: #4e9cdb;
       font-weight: bold;
+      font-size: 25px;
+      
     }
 
     h1 {

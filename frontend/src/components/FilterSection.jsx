@@ -72,7 +72,8 @@ const FilterSection = () => {
 }
 
 const Wrapper = styled.section`
-  padding: 5rem 0;
+  padding: 3rem 0;
+  margin-left: 70px;
   display: flex;
   flex-direction: column;
   gap: 3rem;
@@ -116,7 +117,7 @@ const Wrapper = styled.section`
 
   .filter-company--select {
     padding: 0.3rem 1.2rem;
-    font-size: 1.6rem;
+    font-size: 1rem;
     color: ${({ theme }) => theme.colors.text};
     text-transform: capitalize;
   }

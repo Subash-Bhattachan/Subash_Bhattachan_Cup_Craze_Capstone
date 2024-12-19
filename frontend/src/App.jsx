@@ -21,7 +21,7 @@ function App() {
 
   const theme = {
     colors: {
-    bg: "beige",
+    bg: "#E9EDC9",
     },
     media: {
       mobile: "768px",

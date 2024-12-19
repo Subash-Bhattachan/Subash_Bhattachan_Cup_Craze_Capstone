@@ -65,17 +65,18 @@ const NavWrapper = styled.nav`
   
     .navbar-lists {
       display: flex;
-      gap: 4.8rem;
+      gap: 4.5rem;
       align-items: center;
       list-style-type: none;
+      
 
       .navbar-link {
         &:link,
         &:visited {
           display: inline-block;
           text-decoration: none;
-          font-size: 1.8rem;
-          font-weight: 500;
+          font-size: 1.3rem;
+          font-weight: 550;
           text-transform: uppercase;
           color: ${({ theme }) => theme.colors.black};
           transition: color 0.3s linear;
@@ -126,15 +127,6 @@ const NavWrapper = styled.nav`
       }
     }
 
-    .user-login--name {
-      text-transform: capitalize;
-    }
-
-    .user-logout,
-    .user-login {
-      font-size: 1.4rem;
-      padding: 0.8rem 1.4rem;
-    }
 
     @media (max-width: ${({ theme }) => theme.media.mobile}) {
       .mobile-navbar-btn {

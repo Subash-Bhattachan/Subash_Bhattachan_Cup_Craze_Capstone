@@ -17,8 +17,8 @@ const FeaturedProduct = () => {
   return (
     <Wrapper className="section">
       <div className="container">
-        <div className="intro-data">Check Now!</div>
-        <div className="common-heading">Our Best Sellers!</div>
+        
+        <div className="common-heading">Our Featured Best Sellers!</div>
         <div className="grid grid-three-column">
           {featuredProducts.map((curElem) => {
             return <Product key={curElem.id} {...curElem} />;
@@ -31,24 +31,39 @@ const FeaturedProduct = () => {
 
 
 const Wrapper = styled.section`
-  padding: 4rem 0;
+  padding: 2rem 4rem;
   background-color: ${({ theme }) => theme.colors.bg};
 
   .container {
-    max-width: 120rem;
+    max-width: 140rem;
     margin: 0 auto;
     display: flex;
-    flex-wrap: wrap; 
-    gap: 1.2rem; 
-    padding: 0 8rem; 
-    justify-content: center; 
-    
+    flex-wrap: wrap;
+    gap: 0.1rem; /* Reduced gap to bring images closer together */
+    padding: 0 1rem; /* Increased left and right padding */
+    justify-content: center;
+
+    @media (max-width: 768px) {
+      padding: 0 4rem; /* Reduced padding for smaller screens */
+      flex-direction: column; /* Stack items on smaller screens */
+    }
+  }
+
+ 
+  .common-heading {
+  font-size: 2rem;
+  color: red;
+  padding-top: 1rem;
+  padding-bottom: 1.2rem;
+  
   }
 
   figure {
-    width: 23rem; 
+    width: auto;
+    margin: 0;
     display: flex;
-    flex-direction: column;
+    margin-bottom: 20px;
+    
     justify-content: center;
     align-items: center;
     position: relative;
@@ -62,8 +77,7 @@ const Wrapper = styled.section`
       left: 0;
       width: 0%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      transition: all 0.2s linear;
+      transition: width 0.2s linear;
       cursor: pointer;
     }
 
@@ -78,21 +92,12 @@ const Wrapper = styled.section`
     img {
       max-width: 100%;
       height: auto;
-      transition: all 0.2s linear;
+      transition: transform 0.3s ease;
     }
 
-    .caption {
-      position: absolute;
-      top: 15%;
-      right: 10%;
-      text-transform: uppercase;
-      background-color: ${({ theme }) => theme.colors.bg};
-      color: ${({ theme }) => theme.colors.helper};
-      padding: 0.8rem 2rem;
-      font-size: 1.2rem;
-      border-radius: 2rem;
-    }
+
   }
 `;
+
 
 export default FeaturedProduct;
