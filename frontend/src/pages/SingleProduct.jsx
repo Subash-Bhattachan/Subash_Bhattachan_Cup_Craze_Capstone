@@ -20,7 +20,7 @@ const SingleProduct = () => {
   const { id } = useParams();
 
   // destrcuturing the properties 
-  const { id: alias, name, company, price, description, stock, stars, reviews, image } = singleProduct;
+  const { id: alias, name, company, price, description, stock, reviews, image } = singleProduct;
 
   useEffect(() => {
     console.log(`${API_SINGLE}/${id}`)

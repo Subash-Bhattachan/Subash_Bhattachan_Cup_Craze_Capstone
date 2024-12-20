@@ -9,7 +9,7 @@ const cartReducer = (state, action) => {
             id: id,
             name: product.name,
             amount,
-            image: product.image[0]?.url || "", // Safe navigation with fallback
+            image: product.image[0]?.url || "",
             price: product.price,
         };
         return {
